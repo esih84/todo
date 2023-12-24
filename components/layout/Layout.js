@@ -1,5 +1,4 @@
 'use client'
-import { SessionProvider } from 'next-auth/react'
 import Header from './Header';
 import { createContext, useContext, useMemo, useState } from 'react';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
@@ -35,10 +34,8 @@ const Layout = ({children}) => {
                 <ThemeProvider theme={theme}>
                     <Header/>
 
-                    <SessionProvider>
 
                             {children}
-                    </SessionProvider>
                 </ThemeProvider>
             </ColorModeContext.Provider>
         </>

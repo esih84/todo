@@ -1,8 +1,9 @@
+
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Layout from '@/components/layout/Layout'
 import AddTodo from '@/components/dialog/addTodo'
 import EditTodo from '@/components/dialog/editTodo'
+import BaseLayout from '@/components/layout/BaseLayout'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,13 +16,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+      <BaseLayout>
 
-      <Layout>
       <AddTodo/>
       <EditTodo/>
         {children}
-      </Layout>
-
+      </BaseLayout>
         </body>
     </html>
   )

@@ -113,7 +113,7 @@ export default function Header() {
             <IconButton size="large" aria-label="show 4 new mails" onClick={addModal.onOpen} color="inherit">
                 <AddCircleRoundedIcon />
             </IconButton>
-            <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+            <IconButton sx={{ ml: 1, display: { xs: 'none', sm: 'block' }  }} onClick={colorMode.toggleColorMode} color="inherit">
               {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
             </IconButton>
           </Box>
