@@ -5,7 +5,9 @@ const Todos =async ({query,todos}) => {
     
 
   if (query) {
-    todos = todos.filter(todo=>todo.body === query)
+    todos = todos.filter(todo=>(todo.body.indexOf(query)!= -1 ))
+    // todos = todos.filter(todo=>(todo.body === query))
+    
   } 
   if (todos.length <1) {
     return(
@@ -16,10 +18,10 @@ const Todos =async ({query,todos}) => {
 
     )
   }
-    console.log(todos.length)
+    // console.log(todos.length)
     return (
         // max-h-96
-        <Container dir="rtl" className=" *:pb-3 *:border-b  p-10 shadow-lg rounded-md   min-h-32  my-12">
+        <Container  dir="rtl" className=" *:pb-3 *:border-b *:border-b-gray-400  bg-gray-200  p-10 shadow-lg rounded-md  min-h-80    my-12">
             {todos.map(todo=>(
                 <Todo todo={todo} key={todo.id}/>
             ))}

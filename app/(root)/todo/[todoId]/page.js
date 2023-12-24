@@ -22,7 +22,7 @@ const TodoDetail = async({params:{todoId}}) => {
             <Card sx={{ maxWidth: '100%' }}>
                 <CardContent>
 
-                <Typography variant="h6" color="text.secondary">
+                <Typography variant="h6" color="secondary">
                     {todo.body}
                 </Typography>
                 </CardContent>

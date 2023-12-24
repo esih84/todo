@@ -8,8 +8,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { Toaster } from 'react-hot-toast';
 const DialogBase = ({title,open, onClose, value, onChange,submitHandler,buttonText}) => {
     return (
-        <Dialog dir='rtl' maxWidth="md" fullWidth open={open} onClose={onClose}>
-        <DialogTitle className=' text-sky-500'>{title}</DialogTitle>
+        <Dialog  dir='rtl' maxWidth="md" fullWidth open={open} onClose={onClose}>
+        <DialogTitle color='secondary'>{title}</DialogTitle>
         <DialogContent>
 
           <TextField
@@ -27,7 +27,7 @@ const DialogBase = ({title,open, onClose, value, onChange,submitHandler,buttonTe
         </DialogContent>
         <DialogActions>
           <Button color='error' onClick={onClose}>انصراف</Button>
-          <Button  variant="outlined" onClick={submitHandler}>{buttonText}</Button>
+          <Button color='info'  variant="outlined" onClick={submitHandler}>{buttonText}</Button>
         </DialogActions>
         <Toaster/>
       </Dialog>

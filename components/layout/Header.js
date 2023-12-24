@@ -12,9 +12,9 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import useTodo from '@/hooks/useAddTodo';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
-import { ColorModeContext } from './Layout';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { ColorModeContext } from './BaseLayout';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -69,7 +69,6 @@ export default function Header() {
   const searchHandler=(term)=>{
     // console.log(term)
     const params = new URLSearchParams(searchParams);
-    params.set('page', '1');
     if (term) {
       params.set('query', term);
     } else {
@@ -82,13 +81,14 @@ export default function Header() {
   const addModal =  useTodo()
 
   return (
-    <Box sx={{ flexGrow: 1  }}>
+    <Box bgcolor='primary' sx={{ flexGrow: 1, }}>
       <AppBar dir="rtl"  position="static">
         <Toolbar>
 
           <Typography
             variant="h5"
             noWrap
+            color='secondary.light'
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >

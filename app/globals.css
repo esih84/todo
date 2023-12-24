@@ -19,5 +19,5 @@
 body {
   /* direction: rtl; */
   color: rgb(var(--foreground-rgb));
-  background: white;
+  /* background: white; */
 }
