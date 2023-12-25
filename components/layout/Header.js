@@ -19,14 +19,17 @@ import { ColorModeContext } from './BaseLayout';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
+  display: 'flex',
+  justifyContent:"space-between",
+  alignItems:"center",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: '100%',
+  marginLeft: '1rem',
+  width: '70%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
     width: 'auto',
@@ -113,7 +116,7 @@ export default function Header() {
             <IconButton size="large" aria-label="show 4 new mails" onClick={addModal.onOpen} color="inherit">
                 <AddCircleRoundedIcon />
             </IconButton>
-            <IconButton sx={{ ml: 1, display: { xs: 'none', sm: 'block' }  }} onClick={colorMode.toggleColorMode} color="inherit">
+            <IconButton sx={{ ml: 1, display: { xs: 'block', sm: 'block' }  }} onClick={colorMode.toggleColorMode} color="inherit">
               {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
             </IconButton>
           </Box>

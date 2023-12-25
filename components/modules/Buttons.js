@@ -9,8 +9,8 @@ import { useTransition } from "react";
 import { redirect, usePathname, useRouter } from "next/navigation";
 
 const Buttons = ({todo}) => {
-    const pathname = usePathname()
-    console.log(pathname)
+    // const pathname = usePathname()
+    // console.log(pathname)
     const router = useRouter()
     // const [isDeletePending, startDeleteTransition] = useTransition();
     const editModal =  useEditTodo()
