@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import prisma from "./prismadb";
 
-const serverAuth = async () => {
+export const serverAuth = async () => {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) {
     throw new Error("لطفا وارد حساب کاربری خود بشوید")
@@ -20,4 +20,22 @@ const serverAuth = async () => {
   return { currentUser };
 };
 
-export default serverAuth;
+// export default serverAuth;
+
+export const serverAuthJson = async () => {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.email) {
+    throw new Error("لطفا وارد حساب کاربری خود بشوید")
+
+  }
+  const res = await fetch(`http://localhost:4000/users?email=${session.user.email}`)
+
+  const currentUser = await res.json()
+  // console.log(currentUser)
+  if (!currentUser) {
+    throw new Error("لطفا وارد حساب کاربری خود بشوید")
+  }
+  return { currentUser };
+};
+
+// export default serverAuth;

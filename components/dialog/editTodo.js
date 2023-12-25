@@ -18,13 +18,13 @@ export default function EditTodo() {
     
     const submitHandler =async(e)=>{
        const edit= await editTodo(id,todo)
-        // console.log(message)
-        if (edit?.message) {
-          toast.error(edit.message)
+        if (edit?.status === "failed") {
+          toast.error("ویرایش نا موفق")
         }else{
-          editModal.onClose()
-          setTodo("")
           toast.success("ویرایش شد")
+          setTodo("")
+          setTimeout(()=>{editModal.onClose()},1000)
+          
         }
     }
     

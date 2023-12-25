@@ -5,35 +5,52 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import DialogBase from './dialog';
+import { serverAuth } from '@/utils/serverAuth';
+import { addTodo } from '@/actions/todo';
 
 export default function AddTodo() {
     const router = useRouter()
     const [todo, setTodo]= useState("")
     const addModal =  useTodo()
-    console.log(todo)
+    // console.log(todo)
     const submitHandler =async(e)=>{
         e.preventDefault()
-        const res = await fetch('/api/todos/addTodo',{
-            method:"POST",
-            body:JSON.stringify({todo}),
-            headers:{'Content-Type': "application/json"}
-        })
-        const data = await res.json()
-        if (data.error) {
-            toast.error(data.error,  {
-                duration: 6000,
-              })
-        }
-        if (res.status===201) {
-          toast.success(data.message,  {
-            duration: 6000,
-          })
+
+        // const res = await fetch('/api/todos/addTodo',{
+        //     method:"POST",
+        //     body:JSON.stringify({todo}),
+        //     headers:{'Content-Type': "application/json"}
+        // })
+        const data = await addTodo(todo)
+        // console.log(data)
+        // if (data.error) {
+        //     toast.error(data.error,  {
+        //         duration: 6000,
+        //       })
+        // }else{
+        //   toast.success(data.message,  {
+        //     duration: 6000,
+        //   })
           
-          addModal.onClose()
-          setTodo("")
-          router.refresh(
-          )
-        }
+        //   addModal.onClose()
+        //   setTodo("")
+        //   router.refresh(
+        //   )
+        // }
+        // if (res.status===201) {
+        //   toast.success(data.message,  {
+        //     duration: 6000,
+        //   })
+          if (data.status === "success") {
+            addModal.onClose()
+            setTodo("")
+            router.refresh(
+            )
+          }else{
+            toast.error("مشکلی پیش آمده")
+          }
+
+        // }
     }
     
     

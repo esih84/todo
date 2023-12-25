@@ -1,3 +1,4 @@
+
 export const shortener = (body) => {
     const splitedBody = body.split(" ");
     let newBody;
@@ -10,3 +11,4 @@ export const shortener = (body) => {
     }
     return newBody;
 }
+

@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { Container } from "@mui/material";
 import Todos from "@/components/templates/Todo/Todos";
 import PaginationButton from "@/components/modules/pagination/PaginationButton";
-import { fetchTodos } from "@/actions/todo";
+import { fetchJsonTodos, fetchTodos } from "@/actions/todo";
 // import serverAuth from "@/utils/serverAuth";
 
 export default async function Page({searchParams,searchParams:{query}}) {
@@ -17,8 +17,10 @@ export default async function Page({searchParams,searchParams:{query}}) {
   const PageNumber = Number(searchParams?.page) || 1;
 
   const take =5
-  const skip = (PageNumber-1)* take
-  const {data,metadata} = await fetchTodos({take, skip})
+  // const skip = (PageNumber-1)* take
+  // const {data,metadata} = await fetchTodos({take, skip})
+
+  const {data,metadata} = await fetchJsonTodos({take, PageNumber})
   // console.log({data, metadata})
   return (
     <Container  maxWidth="lg" >
