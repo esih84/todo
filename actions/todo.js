@@ -7,14 +7,21 @@ import { redirect } from "next/navigation";
 import serverAuth from "@/utils/serverAuth";
 
 export const deleteTodo = async (id) => {
-     await prisma.todo.delete({ where: { id } });
+    await prisma.todo.delete({ where: { id } });
      redirect('/')
+
 };
 
 
 export const editTodo = async (id,body) => {
+    try{
+
     await prisma.todo.update({ where: { id }, data: { body:body } });
+    
     revalidatePath("/");
+  }catch{
+    return({message:" مشکلی پیش آمده است"})
+  } 
 };
 
 export const fetchTodos = async({take=5, skip=0})=>{
