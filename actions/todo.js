@@ -18,6 +18,7 @@ export const editTodo = async (id,body) => {
 };
 
 export const fetchTodos = async({take=5, skip=0})=>{
+  try {
     const {currentUser}=await serverAuth()
     let  todos = await prisma.todo.findMany({
       where: {
@@ -36,11 +37,16 @@ export const fetchTodos = async({take=5, skip=0})=>{
     })
     revalidatePath('/')
     return {
-        data : todos,
-        metadata:{
-            hasNextPage: skip + take <total,
-            totalPage : Math.ceil(total/take)
-        }
-    }
+      data : todos,
+      metadata:{
+          hasNextPage: skip + take <total,
+          totalPage : Math.ceil(total/take)
+      }
+  }
+  } catch (error) {
+    throw new Error('مشکلی پیش آمده است')
+  }
+
+
 
 }
